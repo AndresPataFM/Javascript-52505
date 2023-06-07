@@ -6,9 +6,9 @@ let noLoDefino; //undefined
 
 let numeros = 4324;
 // subtipos de números
-let integrales = 24;
+let enteros = 24;
 let flotantes = 24.023;
-let integralesGrandes = 8479465465456484786456+465453444456464646464646464646446466454555454446464545456
+let enterosGrandes = 8479465465456484786456+465453444456464646464646464646446466454555454446464545456
 
 let booleano = true; //verdadero
 let booleano2 = false; //falso
