@@ -156,7 +156,14 @@ fetch("https://pokeapi.co/api/v2/pokemon/ditto")
 
 // con mockapi: https://mockapi.io/
 
-const producto = {name:"Antipulgas Gato", id:"001", type:"Medicinal", price:450, stock:32, description:"Antipulgas felino Frontline Plus"}
+const producto = {
+    name:"Antipulgas Gato", 
+    prodId:"001", 
+    type:"Medicinal", 
+    price:450, 
+    stock:32, 
+    description:"Antipulgas felino Frontline Plus"
+}
 
 const mockapiURL = "https://6448556450c25337443d67bc.mockapi.io/api/products"
 async function postData(url = "", data = {}) {
@@ -174,9 +181,9 @@ async function postData(url = "", data = {}) {
         body: JSON.stringify(data), // El mismo tipo de data declarado en el header
     });
     return response.json(); // parsea json
-}
+} 
 
-// post
+// post | Agrega datos
 // postData(mockapiURL, producto, "POST").then((data) => {
 //     console.log(data);
 // });
@@ -193,7 +200,7 @@ async function getData(url = "") {
 //         console.log(data);
 // });
 
-// PUT
+// PUT | modifica datos
 const productosModificado = {name:"Pelota", id:"012", type:"Juguete", price:"210", stock:9, description:"Pelota plástica hipoalergénica chillona de mascotas (díametro de 12 cm)"}
 async function putData(url = "", data = {}, id) {
     // Default options are marked with *
@@ -211,7 +218,7 @@ async function putData(url = "", data = {}, id) {
 //     console.log(data);
 // });
 
-// Delete
+// Delete | borrar
 async function deleteData(url = "", id) {
     // Default options are marked with *
     const response = await fetch(url+"/"+id, {
