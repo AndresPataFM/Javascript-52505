@@ -31,31 +31,35 @@ const filtrarBusqueda=(consulta)=>{
     return listaFiltrada
 }
 
-formularioBuscador.addEventListener("submit",event=>{
-    event.preventDefault()
-    let valorBusqueda = buscador.value
-    const resultadoBusqueda = filtrarBusqueda(valorBusqueda)
-    if(resultadoBusqueda.length===0){
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'No se encuentra entre nuestros productos'
-        })
-    } 
-    mostrarLista(resultadoBusqueda)
-})
+const buscadorFuncional = ()=>{
+    formularioBuscador.addEventListener("submit",event=>{
+        event.preventDefault()
+        let valorBusqueda = buscador.value
+        const resultadoBusqueda = filtrarBusqueda(valorBusqueda)
+        if(resultadoBusqueda.length===0){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se encuentra entre nuestros productos'
+            })
+        } 
+        mostrarLista(resultadoBusqueda)
+    })
+}
 
 setTimeout(()=>{
     fetch("./productos.json").then(rta=>{
         return rta.json()
     }).then(rta=>{
         mostrarLista(rta)
-        listaProd = rta.map(prod =>{
-            // convertir a JSON y luevo retornarlo a JS rompe relacion de datos.
-            return JSON.parse(JSON.stringify(prod))
-        })
+        // listaProd = rta.map(prod =>{
+        //     // convertir a JSON y luevo retornarlo a JS rompe relacion de datos.
+        //     return JSON.parse(JSON.stringify(prod))
+        // })
+        listaProd = rta
         // 2 maneras de hacer lo mismo, remover el disabled
         formularioBuscador[0].disabled=false
         formularioBuscador[1].removeAttribute('disabled')
+        buscadorFuncional()
     })
 },3000)
